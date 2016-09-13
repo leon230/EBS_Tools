@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+WEB-INFOS
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+
+<div>
+
+    <table style = "border: 1px solid black;">
+        <thead>
+        <th style = "border: 1px solid black;">Filename</th>
+        </thead>
+        <tbody>
+        <tr style = "border: 1px solid black;" th:each="file : ${files}">
+            <td style = "border: 1px solid black;"><a th:href="${file}" th:text="${file}"></a></td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
