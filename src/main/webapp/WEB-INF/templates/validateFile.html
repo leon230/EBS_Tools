@@ -12,12 +12,14 @@
     <th>ID</th>
     <th>Name</th>
     <th>Date</th>
+    <th>Errors</th>
     </thead>
     <tbody>
     <tr th:each="tableItem : ${tableList}">
         <td><a th:text="${tableItem.id}"></a></td>
         <td><a th:text="${tableItem.name}"></a></td>
         <td><a th:text="${tableItem.startDate}"></a></td>
+        <td><a th:text="${tableItem.errorMsg}"></a></td>
     </tr>
     </tbody>
 

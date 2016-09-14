@@ -1,6 +1,7 @@
 package com.ebs.Tools;
 
 import com.ebs.Model.Shipment;
+import com.ebs.Validation.ShipmentValidation;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -73,6 +74,7 @@ public class ReadFile {
     public ArrayList<?> generateListExcel(){
 
         ArrayList<Shipment> arrList = new ArrayList<>();
+        ShipmentValidation shValid;
 
         try {
             String cellValue;
@@ -85,11 +87,10 @@ public class ReadFile {
 
             while (rowIterator.hasNext()) {
                 sh = new Shipment();
+                shValid = new ShipmentValidation();
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
                 while (cellIterator.hasNext()) {
-
-
 
                     Cell cell = cellIterator.next();
                     cellValue = "";
@@ -108,6 +109,7 @@ public class ReadFile {
                             break;
                         default:
                     }
+
                     System.out.println("getting col indexes" + cellValue + "-" + cell.getColumnIndex());
                     if(cell.getColumnIndex() == 0){
                         System.out.print("===> Inserting ID");
@@ -125,22 +127,13 @@ public class ReadFile {
                         sh.setStartDate(cellValue);
                     }
 
+                    sh.setErrorMsg(shValid.FindError(sh));
 
 
 
                 }
-//                System.out.println("Inserting to list" + "\n" + sh.getId() + "-" + sh.getName() + "-" + sh.getStartDate());
                 arrList.add(sh);
-//                System.out.println("After Inserting to list" + "\n");
             }
-//            for (Shipment str: arrList
-//                    ) {
-//                System.out.println(str.getId());
-//                System.out.println(str.getName());
-//                System.out.println(str.getStartDate());
-//                System.out.println("\n");
-//
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

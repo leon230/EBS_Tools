@@ -7,6 +7,7 @@ public class Shipment {
     private String id;
     private String name;
     private String startDate;
+    private String errorMsg;
 
     public String getId() {
         return id;
@@ -31,5 +32,13 @@ public class Shipment {
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+
 
 }
