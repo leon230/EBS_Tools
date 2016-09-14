@@ -1,4 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/resources/css/style.css" />
+</head>
 <body>
 WEB-INFOS
 <div th:if="${message}">
@@ -16,15 +19,15 @@ WEB-INFOS
 
 <div>
 
-    <table>
+    <table class = "mainTable">
         <thead>
-        <th style = "border: 1px solid black;">Filename</th>
-        <th style = "border: 1px solid black;">Action</th>
+        <th>Filename</th>
+        <th >Action</th>
         </thead>
         <tbody>
-        <tr style = "border: 1px solid black;" th:each="file : ${files}">
-            <td style = "border: 1px solid black;"><a th:href="${file}" th:text="${file}"></a></td>
-            <td style = "border: 1px solid black;"><a th:href="@{validateFile(filename=${file})}">Validate</a></td>
+        <tr  th:each="file : ${files}">
+            <td ><a th:href="${file}" th:text="${file}"></a></td>
+            <td ><a th:href="@{validateFile(filename=${file})}">Validate</a></td>
         </tr>
         </tbody>
 

@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -69,12 +70,13 @@ public class ReadFile {
 
 
     }
-    public void generateListExcel(){
+    public ArrayList<?> generateListExcel(){
+
+        ArrayList<Shipment> arrList = new ArrayList<>();
 
         try {
             String cellValue;
             Shipment sh;
-            ArrayList<Shipment> arrList = new ArrayList<>();
             URL fileToRead = new URL(fileName);
             InputStream fis = fileToRead.openStream();
             XSSFWorkbook  myWorkBook = new XSSFWorkbook(fis);
@@ -127,22 +129,22 @@ public class ReadFile {
 
 
                 }
-                System.out.println("Inserting to list" + "\n" + sh.getId() + "-" + sh.getName() + "-" + sh.getStartDate());
+//                System.out.println("Inserting to list" + "\n" + sh.getId() + "-" + sh.getName() + "-" + sh.getStartDate());
                 arrList.add(sh);
-                System.out.println("After Inserting to list" + "\n");
+//                System.out.println("After Inserting to list" + "\n");
             }
-            for (Shipment str: arrList
-                    ) {
-                System.out.println(str.getId());
-                System.out.println(str.getName());
-                System.out.println(str.getStartDate());
-                System.out.println("\n");
-
-            }
+//            for (Shipment str: arrList
+//                    ) {
+//                System.out.println(str.getId());
+//                System.out.println(str.getName());
+//                System.out.println(str.getStartDate());
+//                System.out.println("\n");
+//
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    return arrList;
 
 
 

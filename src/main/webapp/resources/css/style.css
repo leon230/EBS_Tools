@@ -1,0 +1,41 @@
+h1{
+	color:red;
+}
+body {
+    background-color: #ffffff;
+}
+a {
+	margin: 0px;
+	padding: 0px;
+
+}
+hr {
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mainTable  th, td {
+   border: 1px solid black;
+   padding-left: 3px;
+   padding-right: 3px;
+   text-align: center;
+   overflow: hidden;
+   border: 1px solid rgba(242, 242, 242, .8);
+}
+.mainTable {
+    border-collapse: collapse;
+	display: block;
+	overflow-x: auto;
+	width: auto;
+	max-height: 700px;
+
+}
+.mainTable tr:hover {background-color: #b3d9ff}
+.mainTable th {
+    background-color: #ffffff;
+    color: black;
+    font-weight: bold;
+	min-width: 150px;
+}
