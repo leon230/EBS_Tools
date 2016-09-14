@@ -1,20 +1,14 @@
 package com.ebs.Tools;
 
 import com.ebs.Model.Shipment;
-import com.ebs.storage.StorageProperties;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,7 +17,7 @@ import java.util.List;
  */
 public class ReadFile {
     private String fileName;
-    private List<Shipment> listToReturn;
+    private ArrayList<Shipment> listToReturn;
 
 
     public String getFileName() {
@@ -38,7 +32,7 @@ public class ReadFile {
         return listToReturn;
     }
 
-    public void setListToReturn(List<Shipment> listToReturn) {
+    public void setListToReturn(ArrayList<Shipment> listToReturn) {
         this.listToReturn = listToReturn;
     }
     @Autowired
@@ -79,7 +73,8 @@ public class ReadFile {
 
         try {
             String cellValue;
-            Shipment sh = new Shipment();
+            Shipment sh;
+            ArrayList<Shipment> arrList = new ArrayList<>();
             URL fileToRead = new URL(fileName);
             InputStream fis = fileToRead.openStream();
             XSSFWorkbook  myWorkBook = new XSSFWorkbook(fis);
@@ -87,34 +82,68 @@ public class ReadFile {
             Iterator<Row> rowIterator = mySheet.iterator();
 
             while (rowIterator.hasNext()) {
+                sh = new Shipment();
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
                 while (cellIterator.hasNext()) {
 
 
+
                     Cell cell = cellIterator.next();
+                    cellValue = "";
                     switch (cell.getCellType()) {
                         case Cell.CELL_TYPE_STRING:
-                            System.out.print(cell.getStringCellValue() + "\t");
                             cellValue = cell.getStringCellValue();
+                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_NUMERIC:
-                            System.out.print(cell.getNumericCellValue() + "\t");
                             cellValue = String.valueOf(cell.getNumericCellValue());
+                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_BOOLEAN:
-                            System.out.print(cell.getBooleanCellValue() + "\t");
                             cellValue = String.valueOf(cell.getBooleanCellValue());
+                            System.out.print(cellValue + "\t");
                             break;
                         default:
                     }
-                }
-                System.out.println("\n");
-            }
+                    System.out.println("getting col indexes" + cellValue + "-" + cell.getColumnIndex());
+                    if(cell.getColumnIndex() == 0){
+                        System.out.print("===> Inserting ID");
+                        System.out.print("\n");
+                        sh.setId(cellValue);
+                    }
+                    else if (cell.getColumnIndex() == 1){
+                        System.out.print("===> Inserting name");
+                        System.out.print("\n");
+                        sh.setName(cellValue);
+                    }
+                    else if (cell.getColumnIndex() == 2){
+                        System.out.print("===> Inserting date");
+                        System.out.print("\n");
+                        sh.setStartDate(cellValue);
+                    }
 
+
+
+
+                }
+                System.out.println("Inserting to list" + "\n" + sh.getId() + "-" + sh.getName() + "-" + sh.getStartDate());
+                arrList.add(sh);
+                System.out.println("After Inserting to list" + "\n");
+            }
+            for (Shipment str: arrList
+                    ) {
+                System.out.println(str.getId());
+                System.out.println(str.getName());
+                System.out.println(str.getStartDate());
+                System.out.println("\n");
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
 
     }
