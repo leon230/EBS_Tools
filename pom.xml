@@ -4,8 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>myproject</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>EBS_TOOLS</artifactId>
+    <version>0.1</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring.version>4.3.2.RELEASE</spring.version>
+        <spring.security.version>4.1.1.RELEASE</spring.security.version>
+        <cglib.version>2.2.2</cglib.version>
+    </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -47,6 +55,18 @@
             <artifactId>spring-mobile-device</artifactId>
             <version>1.1.5.RELEASE</version>
         </dependency>
+<!--xlsx files-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.11-beta2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.11-beta2</version>
+        </dependency>
 
     </dependencies>
 
@@ -59,9 +79,27 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <url>http://localhost:8080/manager/text</url>
+                    <server>TomcatServer</server>
+                    <path>/TicketSys</path>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
         </plugins>

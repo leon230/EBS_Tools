@@ -1,5 +1,6 @@
 package com.ebs.config;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @Configuration
 @EnableWebMvc
+@EnableAutoConfiguration
 @ComponentScan(basePackages = "com.ebs")
 public class MvcConfiguration extends WebMvcConfigurerAdapter{
 

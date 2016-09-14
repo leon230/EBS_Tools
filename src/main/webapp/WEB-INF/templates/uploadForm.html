@@ -16,13 +16,15 @@ WEB-INFOS
 
 <div>
 
-    <table style = "border: 1px solid black;">
+    <table>
         <thead>
         <th style = "border: 1px solid black;">Filename</th>
+        <th style = "border: 1px solid black;">Action</th>
         </thead>
         <tbody>
         <tr style = "border: 1px solid black;" th:each="file : ${files}">
             <td style = "border: 1px solid black;"><a th:href="${file}" th:text="${file}"></a></td>
+            <td style = "border: 1px solid black;"><a th:href="@{validateFile(filename=${file})}">Validate</a></td>
         </tr>
         </tbody>
 
