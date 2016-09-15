@@ -6,9 +6,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -37,7 +35,9 @@ public class ReadFile {
     public void setListToReturn(ArrayList<Shipment> listToReturn) {
         this.listToReturn = listToReturn;
     }
-    @Autowired
+/*
+    List generation for csv/txt
+ */
     public void generateList(){
 
         int str;
@@ -71,6 +71,9 @@ public class ReadFile {
 
 
     }
+/*
+    List generation for Excel sheets.
+ */
     public ArrayList<?> generateListExcel(){
 
         ArrayList<Shipment> arrList = new ArrayList<>();

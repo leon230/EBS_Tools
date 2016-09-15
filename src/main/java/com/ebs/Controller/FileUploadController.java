@@ -1,5 +1,6 @@
 package com.ebs.Controller;
 
+import com.ebs.Validation.FileValidation;
 import com.ebs.storage.StorageFileNotFoundException;
 import com.ebs.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +55,15 @@ public class FileUploadController {
     @PostMapping("/")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
-
-        storageService.store(file);
-        redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
-
+        String errorMsg = FileValidation.checkFile(file);
+        if(!errorMsg.isEmpty()){
+            redirectAttributes.addFlashAttribute("message",errorMsg);
+        }
+        else {
+            storageService.store(file);
+            redirectAttributes.addFlashAttribute("message",
+                    "You successfully uploaded " + file.getOriginalFilename() + "!");
+        }
         return "redirect:/";
     }
 
