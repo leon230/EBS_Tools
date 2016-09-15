@@ -13,7 +13,7 @@ public class FileValidation {
         if (file.isEmpty()) {
             errorMsg =  "Failed to store empty file " + file.getOriginalFilename();
         }
-        if (file.getSize() >= 20000000) {
+        if (file.getSize() >= 20000001) {
             errorMsg = "Too large file " + file.getOriginalFilename();
         }
 
