@@ -129,9 +129,6 @@ public class ReadFile {
                     }
 
                     sh.setErrorMsg(shValid.FindError(sh));
-
-
-
                 }
                 arrList.add(sh);
             }
