@@ -100,33 +100,33 @@ public class ReadFile {
                     switch (cell.getCellType()) {
                         case Cell.CELL_TYPE_STRING:
                             cellValue = cell.getStringCellValue();
-                            System.out.print(cellValue + "\t");
+//                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_NUMERIC:
                             cellValue = String.valueOf(cell.getNumericCellValue());
-                            System.out.print(cellValue + "\t");
+//                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_BOOLEAN:
                             cellValue = String.valueOf(cell.getBooleanCellValue());
-                            System.out.print(cellValue + "\t");
+//                            System.out.print(cellValue + "\t");
                             break;
                         default:
                     }
 
                     System.out.println("getting col indexes" + cellValue + "-" + cell.getColumnIndex());
                     if(cell.getColumnIndex() == 0){
-                        System.out.print("===> Inserting ID");
-                        System.out.print("\n");
+//                        System.out.print("===> Inserting ID");
+//                        System.out.print("\n");
                         sh.setId(cellValue);
                     }
                     else if (cell.getColumnIndex() == 1){
-                        System.out.print("===> Inserting name");
-                        System.out.print("\n");
+//                        System.out.print("===> Inserting name");
+//                        System.out.print("\n");
                         sh.setName(cellValue);
                     }
                     else if (cell.getColumnIndex() == 2){
-                        System.out.print("===> Inserting date");
-                        System.out.print("\n");
+//                        System.out.print("===> Inserting date");
+//                        System.out.print("\n");
                         sh.setStartDate(cellValue);
                     }
 
