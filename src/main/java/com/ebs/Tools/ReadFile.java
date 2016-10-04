@@ -115,10 +115,6 @@ public class ReadFile {
 
                     System.out.println("getting col indexes" + cellValue + "-" + cell.getColumnIndex());
 
-
-
-
-
                     if(cell.getColumnIndex() == 0){
                         sh.setId(cellValue);
                     }
