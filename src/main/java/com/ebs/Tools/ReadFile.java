@@ -114,20 +114,22 @@ public class ReadFile {
                     }
 
                     System.out.println("getting col indexes" + cellValue + "-" + cell.getColumnIndex());
+
+
+
+
+
                     if(cell.getColumnIndex() == 0){
-//                        System.out.print("===> Inserting ID");
-//                        System.out.print("\n");
                         sh.setId(cellValue);
                     }
                     else if (cell.getColumnIndex() == 1){
-//                        System.out.print("===> Inserting name");
-//                        System.out.print("\n");
-                        sh.setName(cellValue);
+                        sh.setDnumber(cellValue);
                     }
                     else if (cell.getColumnIndex() == 2){
-//                        System.out.print("===> Inserting date");
-//                        System.out.print("\n");
-                        sh.setStartDate(cellValue);
+                        sh.setSlocation(cellValue);
+                    }
+                    else if (cell.getColumnIndex() == 2){
+                        sh.setSlocation(cellValue);
                     }
 
                     sh.setErrorMsg(shValid.FindError(sh));
