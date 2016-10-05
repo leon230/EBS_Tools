@@ -6,7 +6,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
-
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -68,9 +68,10 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public void deleteAll(String fileName) {
-//        FileSystemUtils.deleteRecursively(rootLocation.toFile());
-        System.out.println(rootLocation.toFile().toString() + "/" + fileName);
+    public void deleteAll(File fileName) {
+//        System.out.println(rootLocation.toFile().toString() + "/" + fileName);
+        File toDelete = new File(rootLocation.toFile().toString() + "/" + fileName.getName());
+        FileSystemUtils.deleteRecursively(toDelete);
     }
 
     @Override

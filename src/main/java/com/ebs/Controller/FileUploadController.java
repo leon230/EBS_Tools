@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
@@ -70,10 +71,13 @@ public class FileUploadController {
 
     @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
     public String deleteFiles(HttpServletRequest request){
-        String fileName = request.getParameter("filename");
-            storageService.deleteAll(fileName);
+//        System.out.println(storageService.load(request.getParameter("filename")).toString());
+        File file = new File(request.getParameter("filename"));
+//        String fileName = request.getParameter("filename");
 
-        return "uploadForm";
+            storageService.deleteAll(file);
+
+        return "redirect:/";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
