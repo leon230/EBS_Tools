@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by lukasz.homik on 2016-09-14.
@@ -29,13 +28,9 @@ public class ReadFile {
         this.fileName = fileName;
     }
 
-
-    public void setListToReturn(ArrayList<Shipment> listToReturn) {
-        this.listToReturn = listToReturn;
-    }
-/*
-    List generation for csv/txt
- */
+    /*
+        List generation for csv/txt
+     */
     public void generateList(){
 
         int str;
@@ -45,10 +40,6 @@ public class ReadFile {
         try {
             URL fileToRead = new URL(fileName);
             BufferedReader br = new BufferedReader(new InputStreamReader(fileToRead.openStream()));
-
-//            while ((str = br.readLine()) != null) {
-//                System.out.println(str);
-//            }
             do {
                 str = br.read(buff);
                 if(str != -1){
@@ -59,15 +50,14 @@ public class ReadFile {
                     }
                 }
             }while (str != -1);
-
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-/*
-    List generation for Excel sheets.
- */
+    /*
+        List generation for Excel sheets.
+     */
     public ArrayList<?> generateListExcel(){
 
         ArrayList<Shipment> arrList = new ArrayList<>();
@@ -108,7 +98,6 @@ public class ReadFile {
                         default:
                     }
                     shipmentMap.put(cell.getColumnIndex(),cellValue);
-
                 }
                 sh = new Shipment(shipmentMap.get(0),shipmentMap.get(1),shipmentMap.get(2),shipmentMap.get(3),shipmentMap.get(4)
                         ,shipmentMap.get(5),shipmentMap.get(6),shipmentMap.get(7),shipmentMap.get(8),shipmentMap.get(9)
@@ -129,6 +118,6 @@ public class ReadFile {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    return arrList;
+        return arrList;
     }
 }

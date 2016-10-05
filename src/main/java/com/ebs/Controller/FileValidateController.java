@@ -29,11 +29,13 @@ public class FileValidateController {
     public Model messages(Model model, HttpServletRequest request) {
         String fileName = request.getParameter("filename");
         ArrayList<Shipment> tableList;
+//        System.out.println("Filename: " + fileName);
         ReadFile rf = new ReadFile();
         rf.setFileName(fileName);
         tableList = (ArrayList<Shipment>) rf.generateListExcel();
         model.addAttribute("tableList",tableList);
         model.addAttribute("message", "Validation");
+
 
         return model;
     }
