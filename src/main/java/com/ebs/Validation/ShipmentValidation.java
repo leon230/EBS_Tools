@@ -9,7 +9,6 @@ public class ShipmentValidation {
 
     public String FindError(Shipment sh){
         if (sh.getId().equals("2.0")){
-
             return "id equals 2!";
         }
         else{

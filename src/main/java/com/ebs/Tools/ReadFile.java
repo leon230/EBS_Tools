@@ -63,8 +63,6 @@ public class ReadFile {
                 }
             }while (str != -1);
 
-
-
             br.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,10 +133,5 @@ public class ReadFile {
             e.printStackTrace();
         }
     return arrList;
-
-
-
     }
-
-
 }
