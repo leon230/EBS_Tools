@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * Created by lukasz.homik on 2016-09-14.
+ *  Created by lukasz.homik on 2016-09-14.
  */
 public class ReadFile {
     private String fileName;
