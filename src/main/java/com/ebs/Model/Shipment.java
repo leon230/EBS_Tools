@@ -66,8 +66,76 @@ public class Shipment {
     private String referenceVal5;
     private String referenceGid6;
     private String referenceVal6;
+    private String commCode;
     private String otm_sh_id;
     private String errorMsg;
+
+    public Shipment(String id, String dnumber, String slocation, String dlocation, String servprov, String earlyPickDate, String latePickDate, String earlyDelDate, String lateDelDate, String matCategory, String transcond, String event1Qc, String event1Date, String event1Stop, String event2Qc, String event2Date, String event2Stop, String thu, String thuCount, String totalGrossWeight, String eru, String pfsCount, String basecost, String currency, String addCostTypeVal, String addCostType, String addCostTypeVal2, String addCostType2, String addCostTypeVal3, String addCostType3, String addCostTypeVal4, String addCostType4, String hazmId, String orType, String region, String distance, String transMode, String releaseAttribute, String mattype, String stream, String incoTemrs, String eqGroupId, String event3Qc, String event3Date, String event3Stop, String otc, String city, String street, String zip, String country, String referenceGid, String referenceVal, String referenceGid2, String referenceVal2, String referenceGid3, String referenceVal3, String referenceGid4, String referenceVal4, String referenceGid5, String referenceVal5, String referenceGid6, String referenceVal6, String commCode, String otm_sh_id) {
+        this.id = id;
+        this.dnumber = dnumber;
+        this.slocation = slocation;
+        this.dlocation = dlocation;
+        this.servprov = servprov;
+        this.earlyPickDate = earlyPickDate;
+        this.latePickDate = latePickDate;
+        this.earlyDelDate = earlyDelDate;
+        this.lateDelDate = lateDelDate;
+        this.matCategory = matCategory;
+        this.transcond = transcond;
+        this.event1Qc = event1Qc;
+        this.event1Date = event1Date;
+        this.event1Stop = event1Stop;
+        this.event2Qc = event2Qc;
+        this.event2Date = event2Date;
+        this.event2Stop = event2Stop;
+        this.thu = thu;
+        this.thuCount = thuCount;
+        this.totalGrossWeight = totalGrossWeight;
+        this.eru = eru;
+        this.pfsCount = pfsCount;
+        this.basecost = basecost;
+        this.currency = currency;
+        this.addCostTypeVal = addCostTypeVal;
+        this.addCostType = addCostType;
+        this.addCostTypeVal2 = addCostTypeVal2;
+        this.addCostType2 = addCostType2;
+        this.addCostTypeVal3 = addCostTypeVal3;
+        this.addCostType3 = addCostType3;
+        this.addCostTypeVal4 = addCostTypeVal4;
+        this.addCostType4 = addCostType4;
+        this.hazmId = hazmId;
+        this.orType = orType;
+        this.region = region;
+        this.distance = distance;
+        this.transMode = transMode;
+        this.releaseAttribute = releaseAttribute;
+        this.mattype = mattype;
+        this.stream = stream;
+        this.incoTemrs = incoTemrs;
+        this.eqGroupId = eqGroupId;
+        this.event3Qc = event3Qc;
+        this.event3Date = event3Date;
+        this.event3Stop = event3Stop;
+        this.otc = otc;
+        this.city = city;
+        this.street = street;
+        this.zip = zip;
+        this.country = country;
+        this.referenceGid = referenceGid;
+        this.referenceVal = referenceVal;
+        this.referenceGid2 = referenceGid2;
+        this.referenceVal2 = referenceVal2;
+        this.referenceGid3 = referenceGid3;
+        this.referenceVal3 = referenceVal3;
+        this.referenceGid4 = referenceGid4;
+        this.referenceVal4 = referenceVal4;
+        this.referenceGid5 = referenceGid5;
+        this.referenceVal5 = referenceVal5;
+        this.referenceGid6 = referenceGid6;
+        this.referenceVal6 = referenceVal6;
+        this.commCode = commCode;
+        this.otm_sh_id = otm_sh_id;
+    }
 
     public String getId() {
         return id;
@@ -563,6 +631,14 @@ public class Shipment {
 
     public void setReferenceVal6(String referenceVal6) {
         this.referenceVal6 = referenceVal6;
+    }
+
+    public String getCommCode() {
+        return commCode;
+    }
+
+    public void setCommCode(String commCode) {
+        this.commCode = commCode;
     }
 
     public String getOtm_sh_id() {

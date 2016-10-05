@@ -26,7 +26,7 @@
         <tbody>
         <tr  th:each="file : ${files}">
             <td ><a th:href="${file}" th:text="${file}"></a></td>
-            <td ><a th:href="@{validateFile(filename=${file})}">Validate</a></td>
+            <td ><a th:href="@{validateFile(filename=${file})}">Validate</a> <a th:href="@{deleteAll(filename=${file})}">Delete</a></td>
         </tr>
         </tbody>
 

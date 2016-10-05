@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
@@ -65,6 +66,14 @@ public class FileUploadController {
                     "You successfully uploaded " + file.getOriginalFilename() + "!");
         }
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
+    public String deleteFiles(HttpServletRequest request){
+        String fileName = request.getParameter("filename");
+            storageService.deleteAll(fileName);
+
+        return "uploadForm";
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

@@ -9,16 +9,139 @@
 
 <table class = "mainTable">
     <thead>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Date</th>
-    <th>Errors</th>
+    <th>SHIPMENT </th>
+    <th>Delivery Note Number (DN)</th>
+    <th>Source Location ID</th>
+    <th>Destination Location ID</th>
+    <th>Service Provider ID</th>
+    <th>Early Pickup Date(YYYY/MM/DD hh:mm:ss)</th>
+    <th>Late Pickup Date(YYYY/MM/DD hh:mm:ss)</th>
+    <th>Early Delivery Date(YYYY/MM/DD hh:mm:ss)</th>
+    <th>Late Delivery Date(YYYY/MM/DD hh:mm:ss)</th>
+    <th>Material Category</th>
+    <th>Transport Condition (AMBIENT/TEMPC)</th>
+    <th>Event1 (Quick code)</th>
+    <th>Actual Collection Event1  (YYYY/MM/DD hh:mm:ss)</th>
+    <th>Event1 Stop</th>
+    <th>Event2 (Quick code)</th>
+    <th>Actual Delivery Event2 (YYYY/MM/DD hh:mm:ss)</th>
+    <th>Event2 Stop</th>
+    <th>Transport Handling Unit </th>
+    <th>Transport Handling Unit Count</th>
+    <th>Total Gross Weight (KG)</th>
+    <th>Equipement Reference Unit </th>
+    <th>Total Reference Unit (PFS Count)</th>
+    <th>Base Cost Value for Shipment</th>
+    <th>Currency</th>
+    <th>Additional cost type Value</th>
+    <th>Additional cost type</th>
+    <th>Additional cost type (Value)</th>
+    <th>Additional cost type (Type)</th>
+    <th>Additional cost type (Value)</th>
+    <th>Additional cost type (Type)</th>
+    <th>Additional cost type (Value)</th>
+    <th>Additional cost type (Type)</th>
+    <th>Hazmat Generic ID</th>
+    <th>Order Type</th>
+    <th>Region                 </th>
+    <th>Distance KM</th>
+    <th>Transport Mode</th>
+    <th>Release Attribute</th>
+    <th>Material Type</th>
+    <th>Stream</th>
+    <th>INCO Terms</th>
+    <th>Equipment Group ID</th>
+    <th>Event3(Quick code)</th>
+    <th>Event3 date time</th>
+    <th>Event3 Stop</th>
+    <th>One time customer</th>
+    <th>City</th>
+    <th>Street </th>
+    <th>Zip </th>
+    <th>Country</th>
+    <th>Reference Gid</th>
+    <th>Reference value</th>
+    <th>Reference Gid</th>
+    <th>Reference value</th>
+    <th>Reference Gid</th>
+    <th>Reference value</th>
+    <th>Reference Gid</th>
+    <th>Reference value</th>
+    <th>Reference Gid</th>
+    <th>Reference value</th>
+    <th>Reference Gid</th>
+    <th>Reference value</th>
+    <th>Commodity code</th>
+    <th>OTM_SHIPMENT_ID</th>
+    <th>Error code</th>
+
     </thead>
     <tbody>
     <tr th:each="tableItem : ${tableList}">
         <td><a th:text="${tableItem.id}"></a></td>
         <td><a th:text="${tableItem.dnumber}"></a></td>
         <td><a th:text="${tableItem.slocation}"></a></td>
+        <td><a th:text="${tableItem.dlocation}"></a></td>
+        <td><a th:text="${tableItem.servprov}"></a></td>
+        <td><a th:text="${tableItem.earlyPickDate}"></a></td>
+        <td><a th:text="${tableItem.latePickDate}"></a></td>
+        <td><a th:text="${tableItem.earlyDelDate}"></a></td>
+        <td><a th:text="${tableItem.lateDelDate}"></a></td>
+        <td><a th:text="${tableItem.matCategory}"></a></td>
+        <td><a th:text="${tableItem.transcond}"></a></td>
+        <td><a th:text="${tableItem.event1Qc}"></a></td>
+        <td><a th:text="${tableItem.event1Date}"></a></td>
+        <td><a th:text="${tableItem.event1Stop}"></a></td>
+        <td><a th:text="${tableItem.event2Qc}"></a></td>
+        <td><a th:text="${tableItem.event2Date}"></a></td>
+        <td><a th:text="${tableItem.event2Stop}"></a></td>
+        <td><a th:text="${tableItem.thu}"></a></td>
+        <td><a th:text="${tableItem.thuCount}"></a></td>
+        <td><a th:text="${tableItem.totalGrossWeight}"></a></td>
+        <td><a th:text="${tableItem.eru}"></a></td>
+        <td><a th:text="${tableItem.pfsCount}"></a></td>
+        <td><a th:text="${tableItem.basecost}"></a></td>
+        <td><a th:text="${tableItem.currency}"></a></td>
+        <td><a th:text="${tableItem.addCostTypeVal}"></a></td>
+        <td><a th:text="${tableItem.addCostType}"></a></td>
+        <td><a th:text="${tableItem.addCostTypeVal2}"></a></td>
+        <td><a th:text="${tableItem.addCostType2}"></a></td>
+        <td><a th:text="${tableItem.addCostTypeVal3}"></a></td>
+        <td><a th:text="${tableItem.addCostType3}"></a></td>
+        <td><a th:text="${tableItem.addCostTypeVal4}"></a></td>
+        <td><a th:text="${tableItem.addCostType4}"></a></td>
+        <td><a th:text="${tableItem.hazmId}"></a></td>
+        <td><a th:text="${tableItem.orType}"></a></td>
+        <td><a th:text="${tableItem.region}"></a></td>
+        <td><a th:text="${tableItem.distance}"></a></td>
+        <td><a th:text="${tableItem.transMode}"></a></td>
+        <td><a th:text="${tableItem.releaseAttribute}"></a></td>
+        <td><a th:text="${tableItem.mattype}"></a></td>
+        <td><a th:text="${tableItem.stream}"></a></td>
+        <td><a th:text="${tableItem.incoTemrs}"></a></td>
+        <td><a th:text="${tableItem.eqGroupId}"></a></td>
+        <td><a th:text="${tableItem.event3Qc}"></a></td>
+        <td><a th:text="${tableItem.event3Date}"></a></td>
+        <td><a th:text="${tableItem.event3Stop}"></a></td>
+        <td><a th:text="${tableItem.otc}"></a></td>
+        <td><a th:text="${tableItem.city}"></a></td>
+        <td><a th:text="${tableItem.street}"></a></td>
+        <td><a th:text="${tableItem.zip}"></a></td>
+        <td><a th:text="${tableItem.country}"></a></td>
+        <td><a th:text="${tableItem.referenceGid}"></a></td>
+        <td><a th:text="${tableItem.referenceVal}"></a></td>
+        <td><a th:text="${tableItem.referenceGid2}"></a></td>
+        <td><a th:text="${tableItem.referenceVal2}"></a></td>
+        <td><a th:text="${tableItem.referenceGid3}"></a></td>
+        <td><a th:text="${tableItem.referenceVal3}"></a></td>
+        <td><a th:text="${tableItem.referenceGid4}"></a></td>
+        <td><a th:text="${tableItem.referenceVal4}"></a></td>
+        <td><a th:text="${tableItem.referenceGid5}"></a></td>
+        <td><a th:text="${tableItem.referenceVal5}"></a></td>
+        <td><a th:text="${tableItem.referenceGid6}"></a></td>
+        <td><a th:text="${tableItem.referenceVal6}"></a></td>
+        <td><a th:text="${tableItem.commCode}"></a></td>
+        <td><a th:text="${tableItem.otm_sh_id}"></a></td>
         <td><a th:text="${tableItem.errorMsg}"></a></td>
     </tr>
     </tbody>
