@@ -29,9 +29,6 @@ public class ReadFile {
         this.fileName = fileName;
     }
 
-    public List<Shipment> getListToReturn() {
-        return listToReturn;
-    }
 
     public void setListToReturn(ArrayList<Shipment> listToReturn) {
         this.listToReturn = listToReturn;
