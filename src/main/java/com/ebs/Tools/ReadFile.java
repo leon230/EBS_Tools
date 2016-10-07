@@ -60,13 +60,13 @@ public class ReadFile {
      */
     public ArrayList<?> generateListExcel(){
 
-        ArrayList<Shipment> arrList = new ArrayList<>();
+        ArrayList<Object> arrList = new ArrayList<>();
         ShipmentValidation shValid;
 
         try {
             String cellValue;
             Shipment sh;
-            HashMap<Integer,String> shipmentMap = new HashMap<>();
+            HashMap<Integer,String> returnMap = new HashMap<>();
             URL fileToRead = new URL(fileName);
             InputStream fis = fileToRead.openStream();
             XSSFWorkbook  myWorkBook = new XSSFWorkbook(fis);
@@ -97,23 +97,11 @@ public class ReadFile {
                             break;
                         default:
                     }
-                    shipmentMap.put(cell.getColumnIndex(),cellValue);
+                    returnMap.put(cell.getColumnIndex(),cellValue);
                 }
-                sh = new Shipment(shipmentMap.get(0),shipmentMap.get(1),shipmentMap.get(2),shipmentMap.get(3),shipmentMap.get(4)
-                        ,shipmentMap.get(5),shipmentMap.get(6),shipmentMap.get(7),shipmentMap.get(8),shipmentMap.get(9)
-                        ,shipmentMap.get(10),shipmentMap.get(11),shipmentMap.get(12),shipmentMap.get(13),shipmentMap.get(14)
-                        ,shipmentMap.get(15),shipmentMap.get(16),shipmentMap.get(17),shipmentMap.get(18),shipmentMap.get(19)
-                        ,shipmentMap.get(20),shipmentMap.get(21),shipmentMap.get(22),shipmentMap.get(23),shipmentMap.get(24)
-                        ,shipmentMap.get(25),shipmentMap.get(26),shipmentMap.get(27),shipmentMap.get(28),shipmentMap.get(29)
-                        ,shipmentMap.get(30),shipmentMap.get(31),shipmentMap.get(32),shipmentMap.get(33),shipmentMap.get(34)
-                        ,shipmentMap.get(35),shipmentMap.get(36),shipmentMap.get(37),shipmentMap.get(38),shipmentMap.get(39)
-                        ,shipmentMap.get(40),shipmentMap.get(41),shipmentMap.get(42),shipmentMap.get(43),shipmentMap.get(44)
-                        ,shipmentMap.get(45),shipmentMap.get(46),shipmentMap.get(47),shipmentMap.get(48),shipmentMap.get(49)
-                        ,shipmentMap.get(50),shipmentMap.get(51),shipmentMap.get(52),shipmentMap.get(53),shipmentMap.get(54)
-                        ,shipmentMap.get(55),shipmentMap.get(56),shipmentMap.get(57),shipmentMap.get(58),shipmentMap.get(59)
-                        ,shipmentMap.get(60),shipmentMap.get(61),shipmentMap.get(62),shipmentMap.get(63));
-                sh.setErrorMsg(shValid.FindError(sh));
-                arrList.add(sh);
+
+
+                arrList.add(returnMap);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.ebs.Controller;
 
 import com.ebs.Model.Shipment;
+import com.ebs.Tools.CreateShipmentList;
 import com.ebs.Tools.ReadFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +31,10 @@ public class FileValidateController {
         String fileName = request.getParameter("filename");
         ArrayList<Shipment> tableList;
 //        System.out.println("Filename: " + fileName);
-        ReadFile rf = new ReadFile();
-        rf.setFileName(fileName);
-        tableList = (ArrayList<Shipment>) rf.generateListExcel();
+        CreateShipmentList shList = new CreateShipmentList();
+//        ReadFile rf = new ReadFile();
+//        rf.setFileName(fileName);
+        tableList = shList.generateShipmentList(fileName);
         model.addAttribute("tableList",tableList);
         model.addAttribute("message", "Validation");
 
