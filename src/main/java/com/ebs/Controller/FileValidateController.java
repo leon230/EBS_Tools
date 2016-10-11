@@ -32,9 +32,10 @@ public class FileValidateController {
         ArrayList<Shipment> tableList;
 //        System.out.println("Filename: " + fileName);
         CreateShipmentList shList = new CreateShipmentList();
+        shList.generateShipmentList(fileName);
 //        ReadFile rf = new ReadFile();
 //        rf.setFileName(fileName);
-        tableList = shList.generateShipmentList(fileName);
+        tableList = shList.getShipmentList();
         model.addAttribute("tableList",tableList);
         model.addAttribute("message", "Validation");
 

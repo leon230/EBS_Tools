@@ -23,6 +23,7 @@ public class ReadFile {
     public String getFileName() {
         return fileName;
     }
+    private static ArrayList<Object> arrList;
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
@@ -58,15 +59,15 @@ public class ReadFile {
     /*
         List generation for Excel sheets.
      */
-    public ArrayList<?> generateListExcel(){
+    public void generateListExcel(){
 
-        ArrayList<Object> arrList = new ArrayList<>();
+        ArrayList<Object> arrTemp = new ArrayList<>();
         ShipmentValidation shValid;
 
         try {
             String cellValue;
             Shipment sh;
-            HashMap<Integer,String> returnMap = new HashMap<>();
+            HashMap<Integer,String> returnMap;
             URL fileToRead = new URL(fileName);
             InputStream fis = fileToRead.openStream();
             XSSFWorkbook  myWorkBook = new XSSFWorkbook(fis);
@@ -78,6 +79,7 @@ public class ReadFile {
                 shValid = new ShipmentValidation();
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
+                returnMap = new HashMap<>();
                 while (cellIterator.hasNext()) {
 
                     Cell cell = cellIterator.next();
@@ -97,15 +99,26 @@ public class ReadFile {
                             break;
                         default:
                     }
+
                     returnMap.put(cell.getColumnIndex(),cellValue);
                 }
 
+//                System.out.println(returnMap.toString());
+                arrTemp.add(returnMap);
 
-                arrList.add(returnMap);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        this.setArrList(arrTemp);
+    }
+
+    public ArrayList<Object> getArrList() {
         return arrList;
+    }
+
+    public void setArrList(ArrayList<Object> arrList) {
+        this.arrList = arrList;
     }
 }
