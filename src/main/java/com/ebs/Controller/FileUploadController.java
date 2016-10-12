@@ -72,9 +72,7 @@ public class FileUploadController {
 
     @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
     public String deleteFiles(HttpServletRequest request){
-//        System.out.println(storageService.load(request.getParameter("filename")).toString());
         File file = new File(request.getParameter("filename"));
-//        String fileName = request.getParameter("filename");
 
             storageService.deleteAll(file);
 

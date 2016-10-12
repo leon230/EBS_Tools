@@ -2,6 +2,7 @@ package com.ebs.Controller;
 
 import com.ebs.Model.Shipment;
 import com.ebs.Tools.CreateShipmentList;
+import com.ebs.Tools.ValidationReport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,14 +28,15 @@ public class FileValidateController {
     public Model messages(Model model, HttpServletRequest request) {
         String fileName = request.getParameter("filename");
         ArrayList<Shipment> tableList;
-//        System.out.println("Filename: " + fileName);
         CreateShipmentList shList = new CreateShipmentList();
         shList.generateShipmentList(fileName);
-//        ReadFile rf = new ReadFile();
-//        rf.setFileName(fileName);
         tableList = shList.getShipmentList();
         model.addAttribute("tableList",tableList);
         model.addAttribute("message", "Validation");
+
+        ValidationReport vr = new ValidationReport("");
+
+        vr.StoreData();
 
 
         return model;
