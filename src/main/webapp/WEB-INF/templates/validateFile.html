@@ -7,7 +7,7 @@
     <h2 th:text="${message}"/>
 </div>
 
-<table class = "mainTable">
+<table class = "mainTable" th:if="${message != 'Error: Incorrect template type'}" >
     <thead>
     <th>SHIPMENT </th>
     <th>Delivery Note Number (DN)</th>

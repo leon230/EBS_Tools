@@ -2,6 +2,7 @@ package com.ebs.Controller;
 
 import com.ebs.Model.Shipment;
 import com.ebs.Tools.CreateShipmentList;
+import com.ebs.Tools.ReadFile;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,20 +30,24 @@ public class FileValidateController {
         /**
          * Recognize template
          */
-
         String fileName = request.getParameter("filename");
-        ArrayList<Shipment> tableList;
-        CreateShipmentList shList = new CreateShipmentList();
-        shList.generateShipmentList(fileName);
-        tableList = shList.getShipmentList();
-        model.addAttribute("tableList",tableList);
-        model.addAttribute("message", "Validation");
+        String templateType;
+        ReadFile rf = new ReadFile();
+        rf.setFileName(fileName);
+        templateType = rf.ReadTemplateType();
 
-//        ValidationReport vr = new ValidationReport("");
-//
-//        vr.StoreData();
-
-
+        if (templateType.equals("2Y_SHIPMENT_UPLOAD")){
+            ArrayList<Shipment> tableList;
+            CreateShipmentList shList = new CreateShipmentList();
+            shList.generateShipmentList(fileName);
+            tableList = shList.getShipmentList();
+            model.addAttribute("tableList",tableList);
+            model.addAttribute("message", "Validation: " + templateType);
+        }
+        else
+        {
+            model.addAttribute("message", "Error: Incorrect template type");
+        }
         return model;
     }
 

@@ -18,7 +18,6 @@ import java.util.Iterator;
  */
 public class ReadFile {
     private String fileName;
-    private ArrayList<Shipment> listToReturn;
 
 
     public String getFileName() {
@@ -32,57 +31,42 @@ public class ReadFile {
     /*
         Read Template type
      */
-    public String ReadTemplateType(String filename){
+    public String ReadTemplateType(){
+
+        String cellValue = null;
+
         try {
             URL fileToRead = new URL(fileName);
             InputStream fis = fileToRead.openStream();
             XSSFWorkbook  myWorkBook = new XSSFWorkbook(fis);
             XSSFSheet mySheet = myWorkBook.getSheetAt(0);
             Iterator<Row> rowIterator = mySheet.iterator();
-
             while (rowIterator.hasNext()) {
 
-                shValid = new ShipmentValidation();
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
-                returnMap = new HashMap<>();
                 while (cellIterator.hasNext()) {
-
                     Cell cell = cellIterator.next();
-                    cellValue = "";
                     switch (cell.getCellType()) {
                         case Cell.CELL_TYPE_STRING:
                             cellValue = cell.getStringCellValue();
-//                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_NUMERIC:
                             cellValue = String.valueOf(cell.getNumericCellValue());
-//                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_BOOLEAN:
                             cellValue = String.valueOf(cell.getBooleanCellValue());
-//                            System.out.print(cellValue + "\t");
                             break;
                         default:
                     }
-
-                    returnMap.put(cell.getColumnIndex(),cellValue);
                 }
-
-//                System.out.println(returnMap.toString());
-                arrTemp.add(returnMap);
-
-
+                return cellValue;
             }
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-        return null;
+        return cellValue;
     }
 
     /*
@@ -94,7 +78,6 @@ public class ReadFile {
 
         try {
             String cellValue;
-            Shipment sh;
             HashMap<Integer,String> returnMap;
             URL fileToRead = new URL(fileName);
             InputStream fis = fileToRead.openStream();
@@ -102,9 +85,9 @@ public class ReadFile {
             XSSFSheet mySheet = myWorkBook.getSheetAt(0);
             Iterator<Row> rowIterator = mySheet.iterator();
             rowIterator.next();
+            rowIterator.next();
             while (rowIterator.hasNext()) {
 
-                shValid = new ShipmentValidation();
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
                 returnMap = new HashMap<>();
@@ -115,15 +98,12 @@ public class ReadFile {
                     switch (cell.getCellType()) {
                         case Cell.CELL_TYPE_STRING:
                             cellValue = cell.getStringCellValue();
-//                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_NUMERIC:
                             cellValue = String.valueOf(cell.getNumericCellValue());
-//                            System.out.print(cellValue + "\t");
                             break;
                         case Cell.CELL_TYPE_BOOLEAN:
                             cellValue = String.valueOf(cell.getBooleanCellValue());
-//                            System.out.print(cellValue + "\t");
                             break;
                         default:
                     }
