@@ -1,8 +1,8 @@
-package com.ebs.Tools;
+package com.ebs.tools;
 
-import com.ebs.Model.Shipment;
-import com.ebs.Model.Template;
-import com.ebs.Validation.ShipmentValidation;
+import com.ebs.model.Shipment;
+import com.ebs.model.Template;
+import com.ebs.validation.ShipmentValidation;
 import java.util.ArrayList;
 import java.util.HashMap;
 

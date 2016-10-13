@@ -1,7 +1,7 @@
 //package com.ebs.test;
 //
-//import com.ebs.Controller.FileUploadController;
-//import com.ebs.Controller.FileValidateController;
+//import com.ebs.controller.FileUploadController;
+//import com.ebs.controller.FileValidateController;
 //import com.ebs.storage.StorageService;
 //import org.springframework.test.web.servlet.MockMvc;
 //

@@ -1,6 +1,6 @@
-package com.ebs.Validation;
+package com.ebs.validation;
 
-import com.ebs.Model.Shipment;
+import com.ebs.model.Shipment;
 
 /**
  * Created by Leon on 2016-09-14.

@@ -1,4 +1,4 @@
-package com.ebs.Tools;
+package com.ebs.tools;
 
 /**
  * Created by lukasz.homik on 2016-10-13.

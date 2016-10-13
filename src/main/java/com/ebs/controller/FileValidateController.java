@@ -1,8 +1,8 @@
-package com.ebs.Controller;
+package com.ebs.controller;
 
-import com.ebs.Model.Shipment;
-import com.ebs.Tools.CreateShipmentList;
-import com.ebs.Model.Template;
+import com.ebs.model.Shipment;
+import com.ebs.tools.CreateShipmentList;
+import com.ebs.model.Template;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ public class FileValidateController {
 //    @RequestMapping("/validateFile")
 //    public String FileValidate(RedirectAttributes redirectAttributes){
 //
-//        redirectAttributes.addFlashAttribute("message","Validation");
+//        redirectAttributes.addFlashAttribute("message","validation");
 //        return "validateFile";
 //    }
 
@@ -42,7 +42,7 @@ public class FileValidateController {
             shList.generateShipmentList(fileName);
             tableList = shList.getShipmentList();
             model.addAttribute("tableList",tableList);
-            model.addAttribute("message", "Validation: " + templateType);
+            model.addAttribute("message", "validation: " + templateType);
         }
         else
         {

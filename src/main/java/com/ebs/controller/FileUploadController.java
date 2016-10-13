@@ -1,6 +1,6 @@
-package com.ebs.Controller;
+package com.ebs.controller;
 
-import com.ebs.Validation.FileValidation;
+import com.ebs.validation.FileValidation;
 import com.ebs.storage.StorageFileNotFoundException;
 import com.ebs.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;

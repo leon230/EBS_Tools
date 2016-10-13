@@ -1,4 +1,4 @@
-package com.ebs.Validation;
+package com.ebs.validation;
 
 import org.springframework.web.multipart.MultipartFile;
 

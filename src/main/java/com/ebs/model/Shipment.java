@@ -1,4 +1,4 @@
-package com.ebs.Model;
+package com.ebs.model;
 
 /**
  * Created by lukasz.homik on 2016-09-13.
