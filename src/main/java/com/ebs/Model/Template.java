@@ -5,7 +5,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,13 +17,11 @@ import java.util.Iterator;
 public class Template {
     private String templateFileName;
     private String templateColumns;
-    private ArrayList<Object> templateData;
-
+    private static ArrayList<Object> templateData;
 
     public String getTemplateFileName() {
         return templateFileName;
     }
-    private static ArrayList<Object> arrList;
 
     public void setTemplateFileName(String templateFileName) {
         this.templateFileName = templateFileName;
@@ -124,11 +121,11 @@ public class Template {
     }
 
     public ArrayList<Object> getArrList() {
-        return arrList;
+        return templateData;
     }
 
     public void setArrList(ArrayList<Object> arrList) {
-        this.arrList = arrList;
+        this.templateData = arrList;
     }
 }
 //    /*
