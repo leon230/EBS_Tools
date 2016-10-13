@@ -2,7 +2,6 @@ package com.ebs.Controller;
 
 import com.ebs.Model.Shipment;
 import com.ebs.Tools.CreateShipmentList;
-import com.ebs.Tools.ValidationReport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +25,11 @@ public class FileValidateController {
 
     @RequestMapping(value = "/validateFile", method = RequestMethod.GET)
     public Model messages(Model model, HttpServletRequest request) {
+
+        /**
+         * Recognize template
+         */
+
         String fileName = request.getParameter("filename");
         ArrayList<Shipment> tableList;
         CreateShipmentList shList = new CreateShipmentList();
@@ -34,9 +38,9 @@ public class FileValidateController {
         model.addAttribute("tableList",tableList);
         model.addAttribute("message", "Validation");
 
-        ValidationReport vr = new ValidationReport("");
-
-        vr.StoreData();
+//        ValidationReport vr = new ValidationReport("");
+//
+//        vr.StoreData();
 
 
         return model;

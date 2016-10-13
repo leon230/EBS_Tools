@@ -46,7 +46,6 @@ public class CreateShipmentList {
         return shipmentList;
     }
 
-
     public void setShipmentList(ArrayList<Shipment> shipmentList) {
         this.shipmentList = shipmentList;
     }
