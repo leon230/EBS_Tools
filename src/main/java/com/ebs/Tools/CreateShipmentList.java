@@ -1,6 +1,7 @@
 package com.ebs.Tools;
 
 import com.ebs.Model.Shipment;
+import com.ebs.Model.Template;
 import com.ebs.Validation.ShipmentValidation;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +15,8 @@ public class CreateShipmentList {
     public void generateShipmentList(String fileName){
         Shipment sh;
         ShipmentValidation shValid = new ShipmentValidation();
-        ReadFile rf = new ReadFile();
-        rf.setFileName(fileName);
+        Template rf = new Template();
+        rf.setTemplateFileName(fileName);
         rf.generateListExcel();
         ArrayList<Shipment> arrTemp = new ArrayList<>();
 

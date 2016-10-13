@@ -2,7 +2,7 @@ package com.ebs.Controller;
 
 import com.ebs.Model.Shipment;
 import com.ebs.Tools.CreateShipmentList;
-import com.ebs.Tools.ReadFile;
+import com.ebs.Model.Template;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,9 +32,9 @@ public class FileValidateController {
          */
         String fileName = request.getParameter("filename");
         String templateType;
-        ReadFile rf = new ReadFile();
-        rf.setFileName(fileName);
-        templateType = rf.ReadTemplateType();
+        Template template = new Template();
+        template.setTemplateFileName(fileName);
+        templateType = template.ReadTemplateType();
 
         if (templateType.equals("2Y_SHIPMENT_UPLOAD")){
             ArrayList<Shipment> tableList;

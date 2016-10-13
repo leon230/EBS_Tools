@@ -1,13 +1,12 @@
-package com.ebs.Tools;
+package com.ebs.Model;
 
-import com.ebs.Model.Shipment;
-import com.ebs.Validation.ShipmentValidation;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,17 +15,19 @@ import java.util.Iterator;
 /**
  * Created by lukasz.homik on 2016-09-14.
  */
-public class ReadFile {
-    private String fileName;
+public class Template {
+    private String templateFileName;
+    private String templateColumns;
+    private ArrayList<Object> templateData;
 
 
-    public String getFileName() {
-        return fileName;
+    public String getTemplateFileName() {
+        return templateFileName;
     }
     private static ArrayList<Object> arrList;
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setTemplateFileName(String templateFileName) {
+        this.templateFileName = templateFileName;
     }
     /*
         Read Template type
@@ -36,7 +37,7 @@ public class ReadFile {
         String cellValue = null;
 
         try {
-            URL fileToRead = new URL(fileName);
+            URL fileToRead = new URL(templateFileName);
             InputStream fis = fileToRead.openStream();
             XSSFWorkbook  myWorkBook = new XSSFWorkbook(fis);
             XSSFSheet mySheet = myWorkBook.getSheetAt(0);
@@ -79,7 +80,7 @@ public class ReadFile {
         try {
             String cellValue;
             HashMap<Integer,String> returnMap;
-            URL fileToRead = new URL(fileName);
+            URL fileToRead = new URL(templateFileName);
             InputStream fis = fileToRead.openStream();
             XSSFWorkbook  myWorkBook = new XSSFWorkbook(fis);
             XSSFSheet mySheet = myWorkBook.getSheetAt(0);
@@ -140,7 +141,7 @@ public class ReadFile {
 //
 //        char[] buff = new char[1024];
 //        try {
-//            URL fileToRead = new URL(fileName);
+//            URL fileToRead = new URL(templateFileName);
 //            BufferedReader br = new BufferedReader(new InputStreamReader(fileToRead.openStream()));
 //            do {
 //                str = br.read(buff);
