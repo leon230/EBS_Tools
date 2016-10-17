@@ -30,16 +30,10 @@ public class ShipmentValidation {
         /**
          *  ADDITIONAL COST VALIDATION
          */
-        if(sh.getAddCostTypeVal() != null){
-            if(sh.getAddCostTypeVal().contains(",")) {
+        if(sh.getAddCostTypeVal() != null && sh.getAddCostTypeVal().contains(",")){
                 errorMsg = errorMsg + "Incorrect digit separator, ";
-            }
+
          }
-
-
-        else{
-            errorMsg = "No errors";
-        }
 
         return errorMsg;
 
@@ -57,7 +51,7 @@ public class ShipmentValidation {
                 if ((i != 4 && i != 7) && (Integer.parseInt(String.valueOf(c)) < 0 || Integer.parseInt(String.valueOf(c)) > 9)) {
                     return true;
                 }
-                if ((i == 4 | i == 7) && (c != '-')) {
+                if ((i == 4 || i == 7) && (c != '-')) {
                     return true;
                 }
             }
