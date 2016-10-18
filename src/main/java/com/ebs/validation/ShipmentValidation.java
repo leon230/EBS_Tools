@@ -2,11 +2,10 @@ package com.ebs.validation;
 
 import com.ebs.model.Shipment;
 import com.ebs.tools.DateUtil;
-import java.time.LocalDate;
 import static java.time.LocalDate.*;
 
 /**
- * Created by Leon on 2016-09-14.
+ * Created by lukasz.homik on 2016-09-14.
  */
 public class ShipmentValidation {
 
@@ -36,7 +35,6 @@ public class ShipmentValidation {
          }
 
         return errorMsg;
-
     }
 
     private boolean CheckDateFormat(String dateString){
