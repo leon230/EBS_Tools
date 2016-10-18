@@ -2,7 +2,6 @@ package com.ebs.controller;
 
 import com.ebs.model.Shipment;
 import com.ebs.tools.CreateShipmentList;
-import com.ebs.model.Template;
 import com.ebs.tools.ValidateTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,22 +17,17 @@ import java.util.ArrayList;
 @Controller
 public class FileValidateController {
 
-//    @RequestMapping("/validateFile")
-//    public String FileValidate(RedirectAttributes redirectAttributes){
-//
-//        redirectAttributes.addFlashAttribute("message","validation");
-//        return "validateFile";
-//    }
-
     @RequestMapping(value = "/validateFile", method = RequestMethod.GET)
-    public Model messages(Model model, HttpServletRequest request) {
+    public Model validateFile(Model model, HttpServletRequest request) {
 
-        /**
-         * Recognize template
-         */
+/**
+ * Recognize template
+ */
         String fileName = request.getParameter("filename");
         ValidateTemplate vt = new ValidateTemplate(fileName);
-
+/**
+ * Validate if template has correct template name
+ */
         if (vt.ValidateTemplate()){
             ArrayList<Shipment> tableList;
             CreateShipmentList shList = new CreateShipmentList();

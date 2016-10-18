@@ -3,43 +3,42 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css" />
 </head>
 <body>
-<div class = "bluemsg" th:if="${message}">
-    <h2 th:text="${message}"/>
-</div>
 
-<div>
-    <form method="POST" enctype="multipart/form-data" action="/">
+
+<div class = "uploadContainer">
+
+    <div class = "bluemsg" th:if="${message}">
+        <h1 th:text="${message}"/>
+    </div>
+
+        <form method="POST" enctype="multipart/form-data" action="/">
+            <table class = "mainTable">
+                <tbody>
+                <tr><td>Validation tool upload XLSX</td><td></td></tr>
+                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+                <tr><td><input type="submit" value="Upload" /></td><td></td></tr>
+                </tbody>
+            </table>
+        </form>
+
+
+    <div>
+
         <table class = "mainTable">
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+            <thead>
+            <th>Filename</th>
+            <th >Action</th>
+            </thead>
+            <tbody>
+            <tr  th:each="file : ${files}">
+                <td ><a th:href="${file}" th:text="${file}"></a></td>
+                <td ><a th:href="@{validateFile(filename=${file})}">Validate</a> <a th:href="@{deleteAll(filename=${file})}">Delete</a></td>
+            </tr>
+            </tbody>
+
         </table>
-    </form>
+
+    </div>
 </div>
-
-<div>
-
-    <table class = "mainTable">
-        <thead>
-        <th>Filename</th>
-        <th >Action</th>
-        <th >Records</th>
-        <th >Error count</th>
-        <th >Error report</th>
-        </thead>
-        <tbody>
-        <tr  th:each="file : ${files}">
-            <td ><a th:href="${file}" th:text="${file}"></a></td>
-            <td ><a th:href="@{validateFile(filename=${file})}">Validate</a> <a th:href="@{deleteAll(filename=${file})}">Delete</a></td>
-            <td>n/a</td>
-            <td>n/a</td>
-            <td>n/a</td>
-
-        </tr>
-        </tbody>
-
-    </table>
-
-</div>
-
 </body>
 </html>

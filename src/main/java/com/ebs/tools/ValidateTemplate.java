@@ -15,12 +15,9 @@ public class ValidateTemplate {
 
     public boolean ValidateTemplate(){
 
-        System.out.println(fileName);
-
         Template template = new Template();
         template.setTemplateFileName(fileName);
         templateType = template.ReadTemplateType();
-        System.out.println(templateType);
 
         if (templateType.equals("2Y_SHIPMENT_UPLOAD")){
             return true;
