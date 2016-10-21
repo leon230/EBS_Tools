@@ -13,10 +13,10 @@ public class FileValidation {
         if (file.isEmpty()) {
             errorMsg =  "Failed to store empty file " + file.getOriginalFilename();
         }
-        if (file.getSize() >= 20000001) {
+        else if (file.getSize() >= 20000001) {
             errorMsg = "Too large file " + file.getOriginalFilename();
         }
-        if (file.getOriginalFilename().length() < 5 |
+        else if (file.getOriginalFilename().length() < 5 |
                 !file.getOriginalFilename().substring(file.getOriginalFilename().length()-4,file.getOriginalFilename().length()).toLowerCase().contains("xlsx")){
             errorMsg = "File extension must be XLSX";
         }
