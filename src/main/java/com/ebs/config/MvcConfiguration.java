@@ -8,18 +8,12 @@ import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletCon
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mobile.device.view.LiteDeviceDelegatingViewResolver;
-import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-
-import javax.servlet.ServletException;
 
 @Configuration
 @EnableWebMvc
@@ -31,7 +25,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
-
 
     @Bean
     public ServletContextTemplateResolver templateResolver() {
@@ -49,16 +42,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         return engine;
     }
 
-    @Bean
-    public LiteDeviceDelegatingViewResolver liteDeviceDelegatingViewResolver() {
-        ThymeleafViewResolver delegate = new ThymeleafViewResolver();
-        delegate.setTemplateEngine(templateEngine());
-        delegate.setOrder(1);
-        LiteDeviceDelegatingViewResolver resolver = new LiteDeviceDelegatingViewResolver(delegate);
-        resolver.setMobilePrefix("mobile/");
-        resolver.setTabletPrefix("tablet/");
-        return resolver;
-    }
     /*
         Override max file upload
      */
@@ -73,13 +56,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         });
         return factory;
     }
-//    @Bean
-//    public MultipartResolver filterMultipartResolver() {
-//        CommonsMultipartResolver filterMultipartResolver = new CommonsMultipartResolver();
-//        filterMultipartResolver.setMaxUploadSize(500000);
-//
-//        return filterMultipartResolver;
-//    }
 
     @Override
     public void configureDefaultServletHandling(

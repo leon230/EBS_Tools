@@ -28,8 +28,6 @@ public class FileUploadController {
         this.storageService = storageService;
     }
 
-
-
     @GetMapping("/")
     public String listUploadedFiles(Model model) throws IOException {
 
@@ -42,17 +40,6 @@ public class FileUploadController {
                 .collect(Collectors.toList()));
 
         return "uploadForm";
-    }
-
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity
-                .ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
-                .body(file);
     }
 
     @PostMapping("/")
@@ -68,6 +55,17 @@ public class FileUploadController {
                     "You successfully uploaded " + file.getOriginalFilename() + "!");
         }
         return "redirect:/";
+    }
+
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = storageService.loadAsResource(filename);
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
+                .body(file);
     }
 
     @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
