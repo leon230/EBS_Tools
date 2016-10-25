@@ -68,11 +68,11 @@ public class FileUploadController {
                 .body(file);
     }
 
-    @RequestMapping(value = "/deleteAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteFile", method = RequestMethod.GET)
     public String deleteFiles(HttpServletRequest request){
         File file = new File(request.getParameter("filename"));
 
-            storageService.deleteAll(file);
+            storageService.deleteFile(file);
 
         return "redirect:/";
     }

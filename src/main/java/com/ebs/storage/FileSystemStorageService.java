@@ -68,7 +68,7 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public void deleteAll(File fileName) {
+    public void deleteFile(File fileName) {
 //        System.out.println(rootLocation.toFile().toString() + "/" + fileName);
         File toDelete = new File(rootLocation.toFile().toString() + "/" + fileName.getName());
         FileSystemUtils.deleteRecursively(toDelete);
