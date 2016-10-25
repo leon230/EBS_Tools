@@ -12,6 +12,10 @@ import java.util.HashMap;
 public class CreateShipmentList {
     private ArrayList<Shipment> shipmentList;
 
+    /**
+     *  Generates list of shipments according to Excel file
+     */
+
     public void generateShipmentList(String fileName){
         Shipment sh;
         ShipmentValidation shValid = new ShipmentValidation();

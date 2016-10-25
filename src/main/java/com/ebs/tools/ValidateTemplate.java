@@ -2,9 +2,6 @@ package com.ebs.tools;
 
 import com.ebs.model.Template;
 
-/**
- * Created by lukasz.homik on 2016-10-13.
- */
 public class ValidateTemplate {
     private String templateType;
     private String fileName;
@@ -13,6 +10,9 @@ public class ValidateTemplate {
         this.fileName = fileName;
     }
 
+    /**
+     * Validate if the template has correct tag in first cell
+     */
     public boolean ValidateTemplate(){
 
         Template template = new Template();

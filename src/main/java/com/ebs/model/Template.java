@@ -4,7 +4,6 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,9 +15,11 @@ import java.util.Iterator;
  */
 public class Template {
     private String templateFileName;
-    private String templateColumns;
     private static ArrayList<Object> templateData;
 
+    /**
+     *  Setter and getters
+     */
     public String getTemplateFileName() {
         return templateFileName;
     }
@@ -26,8 +27,17 @@ public class Template {
     public void setTemplateFileName(String templateFileName) {
         this.templateFileName = templateFileName;
     }
-    /*
-        Read Template type
+
+    public ArrayList<Object> getArrList() {
+        return templateData;
+    }
+
+    public void setArrList(ArrayList<Object> arrList) {
+        this.templateData = arrList;
+    }
+
+    /**
+        Read Excel Template type
      */
     public String ReadTemplateType(){
 
@@ -67,7 +77,7 @@ public class Template {
         return cellValue;
     }
 
-    /*
+    /**
         List generation for Excel sheets.
      */
     public void generateListExcel(){
@@ -108,11 +118,7 @@ public class Template {
 
                     returnMap.put(cell.getColumnIndex(),cellValue);
                 }
-
-//                System.out.println(returnMap.toString());
                 arrTemp.add(returnMap);
-
-
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,13 +126,6 @@ public class Template {
         this.setArrList(arrTemp);
     }
 
-    public ArrayList<Object> getArrList() {
-        return templateData;
-    }
-
-    public void setArrList(ArrayList<Object> arrList) {
-        this.templateData = arrList;
-    }
 }
 //    /*
 //        List generation for csv/txt

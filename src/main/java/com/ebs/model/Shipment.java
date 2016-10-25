@@ -70,7 +70,14 @@ public class Shipment {
     private String otm_sh_id;
     private String errorMsg;
 
-    public Shipment(String id, String dnumber, String slocation, String dlocation, String servprov, String earlyPickDate, String latePickDate, String earlyDelDate, String lateDelDate, String matCategory, String transcond, String event1Qc, String event1Date, String event1Stop, String event2Qc, String event2Date, String event2Stop, String thu, String thuCount, String totalGrossWeight, String eru, String pfsCount, String basecost, String currency, String addCostTypeVal, String addCostType, String addCostTypeVal2, String addCostType2, String addCostTypeVal3, String addCostType3, String addCostTypeVal4, String addCostType4, String hazmId, String orType, String region, String distance, String transMode, String releaseAttribute, String mattype, String stream, String incoTemrs, String eqGroupId, String event3Qc, String event3Date, String event3Stop, String otc, String city, String street, String zip, String country, String referenceGid, String referenceVal, String referenceGid2, String referenceVal2, String referenceGid3, String referenceVal3, String referenceGid4, String referenceVal4, String referenceGid5, String referenceVal5, String referenceGid6, String referenceVal6, String commCode, String otm_sh_id) {
+    public Shipment(String id, String dnumber, String slocation, String dlocation, String servprov, String earlyPickDate, String latePickDate, String earlyDelDate,
+                    String lateDelDate, String matCategory, String transcond, String event1Qc, String event1Date, String event1Stop, String event2Qc, String event2Date,
+                    String event2Stop, String thu, String thuCount, String totalGrossWeight, String eru, String pfsCount, String basecost, String currency, String addCostTypeVal,
+                    String addCostType, String addCostTypeVal2, String addCostType2, String addCostTypeVal3, String addCostType3, String addCostTypeVal4, String addCostType4,
+                    String hazmId, String orType, String region, String distance, String transMode, String releaseAttribute, String mattype, String stream, String incoTemrs, String eqGroupId,
+                    String event3Qc, String event3Date, String event3Stop, String otc, String city, String street, String zip, String country, String referenceGid, String referenceVal,
+                    String referenceGid2, String referenceVal2, String referenceGid3, String referenceVal3, String referenceGid4, String referenceVal4, String referenceGid5, String referenceVal5,
+                    String referenceGid6, String referenceVal6, String commCode, String otm_sh_id) {
         this.id = id;
         this.dnumber = dnumber;
         this.slocation = slocation;
