@@ -4,9 +4,6 @@ import com.ebs.model.Shipment;
 import com.ebs.tools.DateUtil;
 import static java.time.LocalDate.*;
 
-/**
- * Created by lukasz.homik on 2016-09-14.
- */
 public class ShipmentValidation {
 
     private String errorMsg = "";
@@ -15,9 +12,9 @@ public class ShipmentValidation {
 
         errorMsg = "";
 
-        /**
-            EARLY PICKUP DATE VALIDATION
-         */
+/**
+    EARLY PICKUP DATE VALIDATION
+ */
 
          if (CheckDateFormat(sh.getEarlyPickDate())){
             errorMsg = errorMsg + "Early pickup date incorrect format, ";
@@ -26,9 +23,9 @@ public class ShipmentValidation {
              errorMsg = errorMsg + "Early pickup date in the future, ";
          }
 
-        /**
-         *  ADDITIONAL COST VALIDATION
-         */
+/**
+ *  ADDITIONAL COST VALIDATION
+ */
         if(sh.getAddCostTypeVal() != null && sh.getAddCostTypeVal().contains(",")){
                 errorMsg = errorMsg + "Incorrect digit separator, ";
 

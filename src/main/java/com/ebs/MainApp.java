@@ -18,8 +18,6 @@ public class MainApp {
         System.out.println("Starting...");
     }
 
-
-
     @Bean
     CommandLineRunner init(StorageService storageService) {
         return (args) -> {

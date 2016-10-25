@@ -20,6 +20,7 @@ public class FileValidation {
         }
 /**
  *  File extension check.
+ *  XLSX acceptable.
  */
         else if (file.getOriginalFilename().length() < 5 |
                 !file.getOriginalFilename().substring(file.getOriginalFilename().length()-4,file.getOriginalFilename().length()).toLowerCase().contains("xlsx")){
