@@ -2,6 +2,7 @@ package com.ebs.model;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xslf.model.geom.Path;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.*;
@@ -20,6 +21,7 @@ public class Template {
     /**
      *  Setter and getters
      */
+
     public String getTemplateFileName() {
         return templateFileName;
     }
@@ -82,7 +84,7 @@ public class Template {
      */
     public void generateListExcel(){
 
-        ArrayList<Object> arrTemp = new ArrayList<>();
+        ArrayList<Object> returnArray = new ArrayList<>();
 
         try {
             String cellValue;
@@ -118,12 +120,12 @@ public class Template {
 
                     returnMap.put(cell.getColumnIndex(),cellValue);
                 }
-                arrTemp.add(returnMap);
+                returnArray.add(returnMap);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        this.setArrList(arrTemp);
+        this.setArrList(returnArray);
     }
 
 }
