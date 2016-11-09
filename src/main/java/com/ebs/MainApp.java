@@ -2,7 +2,6 @@ package com.ebs;
 
 import com.ebs.storage.StorageProperties;
 import com.ebs.storage.StorageService;
-import com.ebs.test.TestClass;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,13 +19,13 @@ public class MainApp {
 /**
  * Test class run
  */
-        Result result = JUnitCore.runClasses(TestClass.class);
-
-        for (Failure failure : result.getFailures()) {
-            System.out.println(failure.toString());
-        }
-
-        System.out.println(result.wasSuccessful());
+//        Result result = JUnitCore.runClasses(TestClass.class);
+//
+//        for (Failure failure : result.getFailures()) {
+//            System.out.println(failure.toString());
+//        }
+//
+//        System.out.println(result.wasSuccessful());
 /**
  * Main App run
  */
