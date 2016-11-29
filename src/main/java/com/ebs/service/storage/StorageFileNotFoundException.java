@@ -1,4 +1,4 @@
-package com.ebs.storage;
+package com.ebs.service.storage;
 
 public class StorageFileNotFoundException extends StorageException {
 

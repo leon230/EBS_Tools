@@ -2,7 +2,8 @@ package com.ebs.controller;
 
 import com.ebs.model.Shipment;
 import com.ebs.tools.CreateShipmentList;
-import com.ebs.tools.ValidateTemplate;
+import com.ebs.validation.FileValidation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,24 +14,23 @@ import java.util.ArrayList;
 @Controller
 public class FileValidateController {
 
+    @Autowired
+    private FileValidation fileValidation;
+
     @RequestMapping(value = "/validateFile", method = RequestMethod.GET)
     public Model validateFile(Model model, HttpServletRequest request) {
+        String fileName = request.getParameter("filename");
 
 /**
- * Recognize template
+ * Validate if template has correct template name and perform Shipment object validation
  */
-        String fileName = request.getParameter("filename");
-        ValidateTemplate vt = new ValidateTemplate(fileName);
-/**
- * Validate if template has correct template name
- */
-        if (vt.ValidateTemplate()){
+        if (fileValidation.validateTemplate(fileName)){
             ArrayList<Shipment> tableList;
             CreateShipmentList shList = new CreateShipmentList();
             shList.generateShipmentList(fileName);
             tableList = shList.getShipmentList();
             model.addAttribute("tableList",tableList);
-            model.addAttribute("message", "validation: " + vt.getTemplateType());
+            model.addAttribute("message", "Validation");
         }
         else
         {

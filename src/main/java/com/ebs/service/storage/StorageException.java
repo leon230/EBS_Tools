@@ -1,4 +1,4 @@
-package com.ebs.storage;
+package com.ebs.service.storage;
 
 public class StorageException extends RuntimeException {
 

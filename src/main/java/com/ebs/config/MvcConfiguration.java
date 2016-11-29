@@ -1,5 +1,6 @@
 package com.ebs.config;
 
+import com.ebs.validation.FileValidation;
 import org.apache.catalina.connector.Connector;
 import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -41,7 +42,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
         engine.setTemplateResolver(templateResolver());
         return engine;
     }
-
     /*
         Override max file upload
      */
@@ -62,4 +62,6 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
             DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+    @Bean
+    public FileValidation fileValidation(){return new FileValidation();}
 }

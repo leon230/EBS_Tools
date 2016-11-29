@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>EBS_TOOLS</artifactId>
+    <artifactId>EBS_TOOLS_XML</artifactId>
     <version>0.1</version>
     <packaging>jar</packaging>
 

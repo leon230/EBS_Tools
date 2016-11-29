@@ -1,6 +1,8 @@
-package com.ebs.storage;
+package com.ebs.service.storage;
 
+import com.ebs.validation.FileValidation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -23,13 +25,25 @@ public class FileSystemStorageService implements StorageService {
     public FileSystemStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
     }
+    @Autowired
+    private Environment environment;
+    @Autowired
+    private FileValidation fileValidation;
 
     @Override
-    public void store(MultipartFile file) {
-        try {
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
-        } catch (Exception e) {
-            throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+    public String store(MultipartFile file) {
+        String errorMsg = fileValidation.validateUploadFile(file);
+        if(!errorMsg.isEmpty()){
+            return errorMsg;
+        }
+        else {
+            try {
+                Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+                return environment.getRequiredProperty("file.upload.success");
+            } catch (Exception e) {
+                return "Error";
+//                throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+            }
         }
     }
 
@@ -68,9 +82,9 @@ public class FileSystemStorageService implements StorageService {
     }
 
     @Override
-    public void deleteFile(File fileName) {
+    public void deleteFile(String fileName) {
 //        System.out.println(rootLocation.toFile().toString() + "/" + fileName);
-        File toDelete = new File(rootLocation.toFile().toString() + "/" + fileName.getName());
+        File toDelete = new File(rootLocation.toFile().toString() + "/" + fileName);
         FileSystemUtils.deleteRecursively(toDelete);
     }
 

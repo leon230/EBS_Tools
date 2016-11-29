@@ -1,22 +1,28 @@
 package com.ebs.validation;
 
+import com.ebs.model.Template;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileValidation {
 
-    public static  String checkFile(MultipartFile file){
+    @Autowired
+    private Environment environment;
+
+    public String validateUploadFile(MultipartFile file){
         String errorMsg = "";
 /**
  * Empty file check.
  */
         if (file.isEmpty()) {
-            errorMsg =  "Failed to store empty file " + file.getOriginalFilename();
+            errorMsg =  environment.getRequiredProperty("file.upload.failure.empty") + file.getOriginalFilename();
         }
 /**
  *  File size check.
  */
-        else if (file.getSize() >= 20000001) {
-            errorMsg = "Too large file " + file.getOriginalFilename();
+        else if (file.getSize() >= Long.parseLong(environment.getRequiredProperty("file.max.size"))) {
+            errorMsg = environment.getRequiredProperty("file.upload.failure.tooLarge");
         }
 /**
  *  File extension check.
@@ -24,9 +30,27 @@ public class FileValidation {
  */
         else if (file.getOriginalFilename().length() < 5 |
                 !file.getOriginalFilename().substring(file.getOriginalFilename().length()-4,file.getOriginalFilename().length()).toLowerCase().contains("xlsx")){
-            errorMsg = "File extension must be XLSX";
+            errorMsg = environment.getRequiredProperty("file.upload.failure.extension");
         }
 
         return errorMsg;
     }
+
+    public boolean validateTemplate(String fileName){
+        String templateType;
+        Template template = new Template();
+        template.setTemplateFileName(fileName);
+        templateType = template.ReadTemplateType();
+
+        if (templateType.equals("2Y_SHIPMENT_UPLOAD")){
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+
 }

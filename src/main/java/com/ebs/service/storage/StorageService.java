@@ -1,9 +1,8 @@
-package com.ebs.storage;
+package com.ebs.service.storage;
 
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
@@ -11,7 +10,7 @@ public interface StorageService {
 
     void init();
 
-    void store(MultipartFile file);
+    String store(MultipartFile file);
 
     Stream<Path> loadAll();
 
@@ -19,6 +18,6 @@ public interface StorageService {
 
     Resource loadAsResource(String filename);
 
-    void deleteFile(File fileName);
+    void deleteFile(String fileName);
 
 }

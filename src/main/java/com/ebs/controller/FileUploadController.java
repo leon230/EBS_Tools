@@ -1,8 +1,6 @@
 package com.ebs.controller;
 
-import com.ebs.validation.FileValidation;
-import com.ebs.storage.StorageFileNotFoundException;
-import com.ebs.storage.StorageService;
+import com.ebs.service.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -14,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
@@ -45,18 +42,12 @@ public class FileUploadController {
     @PostMapping("/")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
-        String errorMsg = FileValidation.checkFile(file);
-        if(!errorMsg.isEmpty()){
-            redirectAttributes.addFlashAttribute("message",errorMsg);
-        }
-        else {
-            storageService.store(file);
-            redirectAttributes.addFlashAttribute("message",
-                    "You successfully uploaded " + file.getOriginalFilename() + "!");
-        }
+
+        redirectAttributes.addFlashAttribute("message",storageService.store(file));
+
         return "redirect:/";
     }
-
+    //Lists all files on the server
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
@@ -70,16 +61,15 @@ public class FileUploadController {
 
     @RequestMapping(value = "/deleteFile", method = RequestMethod.GET)
     public String deleteFiles(HttpServletRequest request){
-        File file = new File(request.getParameter("filename"));
 
-            storageService.deleteFile(file);
+        storageService.deleteFile(request.getParameter("filename"));
 
         return "redirect:/";
     }
 
-    @ExceptionHandler(StorageFileNotFoundException.class)
-    public ResponseEntity handleStorageFileNotFound(StorageFileNotFoundException exc) {
-        return ResponseEntity.notFound().build();
-    }
+//    @ExceptionHandler(StorageFileNotFoundException.class)
+//    public ResponseEntity handleStorageFileNotFound(StorageFileNotFoundException exc) {
+//        return ResponseEntity.notFound().build();
+//    }
 
 }
